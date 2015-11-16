@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Nombre Actividad Ajustes-->
+    <string name="title_activity_settings">Configuración</string>
+
+    <!-- Titulos de Grupos-->
+    <string name="ajustes_title_generales">General</string>
+    <string name="ajustes_title_notificación">Notificaciones</string>
+    <string name="ajustes_title_departamentos">Departamentos</string>
+    <string name="ajustes_title_areas">Áreas</string>
+    <string name="ajustes_title_cuenta">Cuenta</string>
+
+    <!-- GENERALES -->
+    <!-- Preferencia Miniaturas -->
+    <string name="ajustes_minuaturas">Mostrar Miniaturas</string>
+    <string name="ajustes_ayuda_minuaturas">Mostrar imagenes de la institución de procedencia</string>
+
+    <!-- NOTIFICACIONES -->
+    <string name="ajustes_notificaciones">Tono, vibración</string>
+
+    <!-- CUENTA-->
+    <string name="ajustes_ayuda_cuenta">Editar datos</string>
+
+    <!-- Preferencia Número de Noticias -->
+    <string name="ajustes_num_noticias">Número de noticias</string>
+    <string name="ajustes_ayuda_num_noticias">Número máximo de noticias en las listas</string>
+
+    <string-array name="pref_numNoticias_entradas">
+        <item>6</item>
+        <item>8</item>
+        <item>12</item>
+        <item>16</item>
+    </string-array>
+
+    <string-array name="pref_numNoticias_valores">
+        <item>6</item>
+        <item>8</item>
+        <item>12</item>
+        <item>16</item>
+    </string-array>
+
+    <string name="dialogTitle">Notificaciones de...</string>
+    <!-- Preferencia Departamentos de Noticias -->
+    <string name="ajustes_departamentos">Selección de departamentos</string>
+    <string name="ajustes_ayuda_departamentos">Selecione departamentos de interés</string>
+    <string name="departamento_admon">Administración</string>
+    <string name="departamento_bio">Bioquímica</string>
+    <string name="departamento_electrica">Eléctrica</string>
+    <string name="departamento_electronica">Electrónica</string>
+    <string name="departamento_industrial">Industrial</string>
+    <string name="departamento_mecatronica">Mecatrónica</string>
+    <string name="departamento_mecanica">Mecánica</string>
+    <string name="departamento_quimica">Química</string>
+    <string name="departamento_sistemas">Sistemas</string>
+
+    <string-array name="ajustes_departamentos_entradas">
+        <item>Administración</item>
+        <item>Bioquímica</item>
+        <item>Eléctrica</item>
+        <item>Electrónica</item>
+        <item>Industrial</item>
+        <item>Mecatrónica</item>
+        <item>Mecánica</item>
+        <item>Química</item>
+        <item>Sistemas</item>
+    </string-array>
+
+    <string-array name="ajustes_departamentos_valores">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+
+    <!-- Preferencia Departamentos de Noticias -->
+    <string name="ajustes_areas">Áreas de interés</string>
+    <string name="ajustes_ayuda_areas">Seleccione áreas de interés</string>
+
+    <string name="area_becas">Becas</string>
+    <string name="area_conferencias">Conferencias</string>
+    <string name="area_congresos">Congresos</string>
+    <string name="area_convocatorias">Convocatorias</string>
+    <string name="area_eventos">Eventos</string>
+    <string name="area_ingles">Inglés</string>
+    <string name="area_residencias">Residencias</string>
+    <string name="area_servicio">Servicio</string>
+    <string name="area_talleres">Talleres</string>
+    <string name="area_tutorias">Tutorias</string>
+    <string name="area_veranos">Veranos</string>
+
+    <string-array name="ajustes_areas_entradas">
+        <item>@string/area_becas</item>
+        <item>@string/area_conferencias</item>
+        <item>@string/area_congresos</item>
+        <item>@string/area_convocatorias</item>
+        <item>@string/area_eventos</item>
+        <item>@string/area_ingles</item>
+        <item>@string/area_residencias</item>
+        <item>@string/area_servicio</item>
+        <item>@string/area_talleres</item>
+        <item>@string/area_tutorias</item>
+        <item>@string/area_veranos</item>
+    </string-array>
+
+    <string-array name="ajustes_areas_valores">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+    </string-array>
+
+    <!-- Preferencias de Cuenta -->
+    <string name="ajustes_nombre_Usuario">Nombre de usuario</string>
+    <string name="ajustes_ayuda_nombre_Usuario">Cambia el nombre del usuario</string>
+    <string name="ajustes_clave_Usuario">Clave del usuario</string>
+    <string name="ajustes_ayuda_clave_Usuario">Cambia la clave del usuario</string>
+    <string name="dialog_clave">Ingresar correo :</string>
+
+</resources>

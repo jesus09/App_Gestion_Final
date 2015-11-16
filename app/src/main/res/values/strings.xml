@@ -1,0 +1,109 @@
+<resources>
+    <string name="app_name">Noti~Tec</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="descripcion_logo">Logo Aplicación</string>
+
+    <!-- LOGIN -->
+    <string name="login_etiq_input_User">Usuario</string>
+    <string name="login_etiq_input_Pass">Contraseña</string>
+    <string name="login_etiq_button_sign_in">Entrar</string>
+    <string name="login_etiq_button_registers">Invitado</string>
+
+    <string name="item_noticias">Noticias</string>
+    <string name="item_calendario">Calendario</string>
+    <string name="item_reportar">Reporte</string>
+    <string name="sub_item_titulo">Cuenta</string>
+    <string name="item_configuracion">Configuración</string>
+    <string name="item_cerrar_sesion">Cerrar Sesión</string>
+
+    <string name="titulo_tab_new_eventos">EVENTOS</string>
+    <string name="titulo_tab_new_externos">EXTERNAS</string>
+
+    <!-- DESIGN ITEM LIST NEWS -->
+
+    <!-- Design Item Noticia CardView -->
+    <string name="descripcion_item_new">Tipo de noticia</string>
+    <string name="cardview_titulo_new">Título de noticia</string>
+    <string name="cardview_autor_new">Autor de noticia</string>
+    <string name="cardview_fecha_new">Fecha de noticia</string>
+    <string name="cardview_contenido_new">Contenido de noticia</string>
+
+    <!-- Design Item Noticia CardView -->
+    <string name="descripcion_item_calendar">E</string>
+    <string name="cardview_titulo_calendar">Enero</string>
+    <string name="cardview_anio_calendar">2015</string>
+
+    <!-- Design Noticia Completa -->
+    <string name="noticia_full_autor">Autor</string>
+    <string name="noticia_full_fecha">Fecha</string>
+
+    <!--Sección REPORTES -->
+    <string name="seccion_reporte">Reportar</string>
+    <string name="reporte_descripcion_imagen">Imagen del reporte</string>
+    <string name="reporte_descripcion">En esta sección puede mandar una imagen con un breve texto
+        explicando el problema para que las autoridades atiendan el inconveniente.</string>
+    <string name="reporte_etiq_button">Agregar imagen</string>
+    <string name="reporte_etiq_button_enviar">Enviar</string>
+    <string name="reporte_hint_input">Descripción del problema</string>
+    <string name="title_activity_login_">Login_Activity</string>
+    <string name="title_activity_ajustes">Ajustes</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+
+</resources>

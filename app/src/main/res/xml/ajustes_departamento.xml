@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+    Atributos especiales para una preferencia con estilo de lista:
+
+    entries: Representa cada uno de los nombres que verá
+    el usuario para las opciones.
+
+    entryValues: Valores para cada opción contenida en entries.
+    -->
+    <PreferenceCategory
+        android:key="ajustes_departamentos"
+        android:title="@string/ajustes_title_departamentos">
+
+        <MultiSelectListPreference
+            android:dialogTitle="@string/dialogTitle"
+            android:entries="@array/ajustes_departamentos_entradas"
+            android:entryValues="@array/ajustes_departamentos_valores"
+            android:key="listaDepartamentos"
+            android:summary="@string/ajustes_ayuda_departamentos"
+            android:title="@string/ajustes_title_departamentos" />
+    </PreferenceCategory>
+</PreferenceScreen>

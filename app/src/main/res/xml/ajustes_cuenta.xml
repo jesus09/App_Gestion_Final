@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="ajustes_cuenta"
+        android:title="@string/ajustes_title_cuenta">
+
+        <EditTextPreference
+            android:key="username"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="@string/ajustes_ayuda_nombre_Usuario"
+            android:title="@string/ajustes_nombre_Usuario" />
+        <!-- Password-->
+        <EditTextPreference
+            android:inputType="textPassword"
+            android:key="clave_username"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="@string/ajustes_ayuda_clave_Usuario"
+            android:title="@string/ajustes_clave_Usuario" />
+    </PreferenceCategory>
+</PreferenceScreen>

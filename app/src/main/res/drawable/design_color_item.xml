@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- State when a row is being pressed, but hasn't yet been activated (finger down) -->
+    <item android:drawable="@color/pressed_noticia" android:state_pressed="true" />
+
+    <item android:drawable="@color/activated_noticia" android:state_selected="true" />
+
+    <item android:drawable="@color/activated_noticia" android:state_activated="true" />
+
+</selector>

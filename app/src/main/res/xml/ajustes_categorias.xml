@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:key="ajustes_notificacion"
+        android:title="@string/ajustes_title_areas">
+
+        <MultiSelectListPreference
+            android:dialogTitle="@string/dialogTitle"
+            android:entries="@array/ajustes_areas_entradas"
+            android:entryValues="@array/ajustes_areas_valores"
+            android:key="listaCategorias"
+            android:summary="@string/ajustes_ayuda_areas"
+            android:title="@string/ajustes_title_areas" />
+
+    </PreferenceCategory>
+</PreferenceScreen>

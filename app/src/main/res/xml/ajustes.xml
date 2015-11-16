@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+     key: Representa la clave de la preferencia que se usará en el almacenamiento
+     dentro del archivo Shared Preferences.
+
+    title: Es la cadena que verá el usuario en la aplicación
+    como título principal.
+
+    summary: Aquí puedes escribir un resumen sobre el estado
+    de la preferencia.
+
+    defaultValue: Es el valor por defecto que tendrá la preferencia
+    cuando se inicie por primera vez la aplicación o en caso de que
+    se requiera un reinicio. Como ves, asigné true como
+    valor predeterminado para que se muestren las miniaturas al inicio.
+    -->
+    <PreferenceCategory
+        android:key="ajustes_generales"
+        android:title="@string/ajustes_title_generales">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="miniaturas"
+            android:summary="@string/ajustes_ayuda_minuaturas"
+            android:title="@string/ajustes_minuaturas" />
+
+        <!-- Cantidad máxima de entradas -->
+        <ListPreference
+            android:defaultValue="10"
+            android:entries="@array/pref_numNoticias_entradas"
+            android:entryValues="@array/pref_numNoticias_valores"
+            android:key="numNoticias"
+            android:summary="@string/ajustes_ayuda_num_noticias"
+            android:title="@string/ajustes_num_noticias" />
+    </PreferenceCategory>
+</PreferenceScreen>

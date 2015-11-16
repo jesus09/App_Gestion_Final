@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/header_height"
+    android:background="@drawable/itver"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:padding="@dimen/header_left_padding"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:id="@+id/circleView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="38dp"
+        android:src="@drawable/logo"
+        android:visibility="gone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:text="BIENVENIDO"
+        android:textColor="@color/color_blanco"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/cabecera_name_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:text="Instituto Tecnológico de Veracruz"
+        android:textColor="@color/color_blanco"
+        android:textStyle="bold|italic" />
+</LinearLayout>

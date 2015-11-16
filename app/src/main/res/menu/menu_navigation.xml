@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_noticias"
+            android:checked="true"
+            android:icon="@android:drawable/ic_menu_send"
+            android:title="@string/item_noticias" />
+        <item
+            android:id="@+id/nav_calendario"
+            android:checked="true"
+            android:icon="@android:drawable/ic_menu_my_calendar"
+            android:title="@string/item_calendario" />
+
+        <item
+            android:id="@+id/nav_reportar"
+            android:icon="@android:drawable/ic_menu_report_image"
+            android:visible="false"
+            android:enabled="false"
+            android:title="@string/item_reportar" />
+
+        <!-- Sección de Cuenta -->
+        <item
+            android:id="@+id/cuenta_section"
+            android:title="@string/sub_item_titulo">
+            <menu>
+                <item
+                    android:id="@+id/nav_configuracion"
+                    android:icon="@android:drawable/ic_menu_manage"
+                    android:title="@string/item_configuracion" />
+                <item
+                    android:id="@+id/nav_cerrar_sesion"
+                    android:icon="@android:drawable/ic_lock_power_off"
+                    android:title="@string/item_cerrar_sesion" />
+            </menu>
+        </item>
+    </group>
+</menu>

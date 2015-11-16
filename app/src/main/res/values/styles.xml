@@ -1,0 +1,50 @@
+<resources>
+
+    <style name="Theme.NotiTec" parent="Base.AppTheme" />
+
+    <style name="Theme.Settings" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/accentColor</item>
+        <item name="android:windowBackground">@color/window_background</item>
+    </style>
+
+    <style name="Base.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/accentColor</item>
+
+        <item name="android:windowBackground">@color/window_background</item>
+    </style>
+
+    <style name="Theme.ConNavigationDrawer" parent="Base.AppTheme" />
+
+    <style name="Theme.NotiTec.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.NotiTec.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Estilo_Input_Login" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_margin">15dp</item>
+        <item name="android:background">@drawable/shape</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColorHint">@color/blanco</item>
+        <item name="android:textColor">@color/blanco</item>
+    </style>
+
+    <style name="Estilo_Button_Login" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/boton_redondo</item>
+        <item name="android:textColor">@color/blanco</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:typeface">normal</item>
+    </style>
+
+</resources>
