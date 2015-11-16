@@ -12,8 +12,6 @@ import java.util.ArrayList;
 
 public class VisualizaDataSource {
 
-    private static VisualizaDataSource visualizaDataSource = null;
-
     //Metainformación de la base de datos
     public static final String VISUALIZA_TABLE_NAME = "Visualize";
     public static final String STRING_TYPE = "TEXT";
@@ -171,12 +169,5 @@ public class VisualizaDataSource {
             condicionDepartamentos += " OR " + NewsDataSource.ColumnNoticias.DEPARTAMENTO + " = " + departamentos[i];
         }
         return condicionDepartamentos + " )";
-    }
-
-    public static synchronized VisualizaDataSource getInstance(Context context) {
-        if (visualizaDataSource == null) {
-            visualizaDataSource = new VisualizaDataSource(context);
-        }
-        return visualizaDataSource;
     }
 }

@@ -83,11 +83,13 @@ public class Controlador_News_Eventos implements RecyclerView.OnItemTouchListene
     }
 
     private void mostrarNoticia(int position) {
-        VisualizaDataSource bd = VisualizaDataSource.getInstance(context);
+        VisualizaDataSource bd = new VisualizaDataSource(context);
         Preferencias preferencias = new Preferencias(context);
 
         String user = preferencias.getUserName();
         bd.noticiaVista(user, items.get(position));
+
+        adapterCursor_noticias.notifyDataSetChanged();
 
         Noticia_FullActivity.createInstance(context, items.get(position));
     }
@@ -105,7 +107,7 @@ public class Controlador_News_Eventos implements RecyclerView.OnItemTouchListene
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                VisualizaDataSource bd = VisualizaDataSource.getInstance(context);
+                                VisualizaDataSource bd = new VisualizaDataSource(context);
                                 Preferencias preferencias = new Preferencias(context);
                                 String usuario = preferencias.getUserName();
                                 bd.eliminarNoticiaDeLista(usuario, items.get(position));

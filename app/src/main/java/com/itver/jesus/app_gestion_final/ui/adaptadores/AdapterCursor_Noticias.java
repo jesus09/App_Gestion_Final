@@ -78,7 +78,7 @@ public class AdapterCursor_Noticias extends RecyclerView.Adapter<AdapterCursor_N
         viewHolder.contenido.setText(contenido);
 
         if (visto == 0) {
-            viewHolder.itemView.setSelected(true);
+            viewHolder.itemView.setActivated(true);
         }
     }
 

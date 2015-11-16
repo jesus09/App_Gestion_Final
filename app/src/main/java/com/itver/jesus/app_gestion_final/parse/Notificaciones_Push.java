@@ -25,6 +25,8 @@ import org.json.JSONObject;
 public class Notificaciones_Push extends ParsePushBroadcastReceiver {
 
     private final String TAG = "gestion";
+    private final static String TITULO_NOTIF = "titulo";
+    private final static String MENSAJE_NOTIF = "mensaje";
     private final static String ID_NOTICIA = "idNoticia";
     private final static String ID_IMAGEN = "imagenNoticia";
     private final static String ID_TITULO = "tituloNoticia";
@@ -48,7 +50,7 @@ public class Notificaciones_Push extends ParsePushBroadcastReceiver {
             Log.e(TAG, "Push message json exception: " + e.getMessage());
         }
 
-        boolean notif = pushData.has("titulo") && pushData.has("mensaje")
+        boolean notif = pushData.has(TITULO_NOTIF) && pushData.has(MENSAJE_NOTIF)
                 && pushData.has(ID_NOTICIA) && pushData.has(ID_TITULO) && pushData.has(ID_CONTENIDO)
                 && pushData.has(ID_FECHA) && pushData.has(ID_AUTOR);
 

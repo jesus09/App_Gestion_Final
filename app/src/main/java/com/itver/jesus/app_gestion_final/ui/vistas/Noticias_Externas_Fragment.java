@@ -1,6 +1,7 @@
 package com.itver.jesus.app_gestion_final.ui.vistas;
 
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -57,9 +58,13 @@ public class Noticias_Externas_Fragment extends Model_Fragment {
 
         preferencias = new Preferencias(getContext());
         adapter = new AdapterCursor_Noticias(getContext(), preferencias.getMiniaturas());
+        recycler.setAdapter(adapter);
 
         Log.e("gestion", "onCreateView EXTERNAS !!!!! ");
         new CargaDatos().execute();
+
+        controlador = new Controlador_News_Externos(fragment, items);
+        recycler.addOnItemTouchListener(controlador);
 
         return view;
     }
@@ -68,12 +73,14 @@ public class Noticias_Externas_Fragment extends Model_Fragment {
         return recycler;
     }
 
+    Cursor cursor;
+
     @Override
     public void onResume() {
         super.onResume();
         // Actualizar cantidad de items
         int cantidadItems = preferencias.getCantidadFilasList();
-        Log.e("gestion", "onResume EXTERNAS !!!!! ");
+//        Log.e("gestion", "onResume EXTERNAS !!!!! ");
 //        new CargaDatos().execute();
     }
 
@@ -88,7 +95,7 @@ public class Noticias_Externas_Fragment extends Model_Fragment {
             String[] categorias = preferencias.getCategoriasForExternsForUser();
             String[] noCategorias = Preferencias.CATEGORIAS_EVENTOS;
 
-            adapter.swapCursor(bd.getCursorWithPreferences(usuario, departamentos, categorias, noCategorias));
+            cursor = bd.getCursorWithPreferences(usuario, departamentos, categorias, noCategorias);
             items = bd.getListWithPreferences(usuario, departamentos, categorias, noCategorias);
 
             return null;
@@ -96,10 +103,8 @@ public class Noticias_Externas_Fragment extends Model_Fragment {
 
         @Override
         protected void onPostExecute(Void unused) {
-            recycler.setAdapter(adapter);
-
-            controlador = new Controlador_News_Externos(fragment, items);
-            recycler.addOnItemTouchListener(controlador);
+            adapter.swapCursor(cursor);
+            controlador.setItems(items);
         }
     }
 }

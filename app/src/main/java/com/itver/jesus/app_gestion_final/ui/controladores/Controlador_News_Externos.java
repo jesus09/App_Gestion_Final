@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -81,12 +83,12 @@ public class Controlador_News_Externos implements RecyclerView.OnItemTouchListen
     }
 
     private void mostrarNoticia(int position) {
-        VisualizaDataSource bd = VisualizaDataSource.getInstance(context);
-        Preferencias preferencias = new Preferencias(context);
-
-        String user = preferencias.getUserName();
-        bd.noticiaVista(user, items.get(position));
-
+//        VisualizaDataSource bd = new VisualizaDataSource(context);
+//        Preferencias preferencias = new Preferencias(context);
+//
+//        String user = preferencias.getUserName();
+//        bd.noticiaVista(user, items.get(position));
+        new UpdateAdapterTask(position).execute();
         Noticia_FullActivity.createInstance(context, items.get(position));
     }
 
@@ -103,7 +105,7 @@ public class Controlador_News_Externos implements RecyclerView.OnItemTouchListen
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                VisualizaDataSource bd = VisualizaDataSource.getInstance(context);
+                                VisualizaDataSource bd = new VisualizaDataSource(context);
                                 Preferencias preferencias = new Preferencias(context);
                                 String usuario = preferencias.getUserName();
                                 bd.eliminarNoticiaDeLista(usuario, items.get(position));
@@ -129,14 +131,60 @@ public class Controlador_News_Externos implements RecyclerView.OnItemTouchListen
         return builder.create();
     }
 
-    private void actualizarLista() {
-        VisualizaDataSource bd = VisualizaDataSource.getInstance(context);
-        Preferencias preferencias = new Preferencias(context);
-        String usuario = preferencias.getUserName();
-        String[] departamentos = preferencias.getDepartamentosForUser();
-        String[] categorias = preferencias.getCategoriasForExternsForUser();
-        String[] noCategorias = Preferencias.CATEGORIAS_EVENTOS;
+    private class UpdateAdapterTask extends AsyncTask<Void, Void, Void> {
 
-        adapterCursor_noticias.swapCursor(bd.getCursorWithPreferences(usuario, departamentos, categorias, noCategorias));
+        private Cursor cursor;
+        private int position;
+
+        public UpdateAdapterTask(int position) {
+            this.position = position;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            VisualizaDataSource bd = new VisualizaDataSource(context);
+            Preferencias preferencias = new Preferencias(context);
+
+            String user = preferencias.getUserName();
+            bd.noticiaVista(user, items.get(position));
+            Log.e("gestion", "Item : " + position);
+
+            String usuario = preferencias.getUserName();
+            String[] departamentos = preferencias.getDepartamentosForUser();
+            String[] categorias = preferencias.getCategoriasForExternsForUser();
+            String[] noCategorias = Preferencias.CATEGORIAS_EVENTOS;
+
+            cursor = bd.getCursorWithPreferences(usuario, departamentos, categorias, noCategorias);
+            items = bd.getListWithPreferences(usuario, departamentos, categorias, noCategorias);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            Log.e("gestion","Cambiando el cursor");
+            adapterCursor_noticias.swapCursor(cursor);
+            adapterCursor_noticias.notifyDataSetChanged();
+        }
+    }
+
+    /*
+        private void actualizarLista() {
+            VisualizaDataSource bd = new VisualizaDataSource(context);
+            Preferencias preferencias = new Preferencias(context);
+            String usuario = preferencias.getUserName();
+            String[] departamentos = preferencias.getDepartamentosForUser();
+            String[] categorias = preferencias.getCategoriasForExternsForUser();
+            String[] noCategorias = Preferencias.CATEGORIAS_EVENTOS;
+
+            adapterCursor_noticias.swapCursor(bd.getCursorWithPreferences(usuario, departamentos, categorias, noCategorias));
+        }
+    */
+    public ArrayList<Noticia> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Noticia> items) {
+        this.items = items;
     }
 }

@@ -64,8 +64,12 @@ public class Noticias_Eventos_Fragment extends Model_Fragment {
 
         preferencias = new Preferencias(getContext());
         adapter = new AdapterCursor_Noticias(getContext(), preferencias.getMiniaturas());
+        recycler.setAdapter(adapter);
 
         new CargaDatos().execute();
+
+        controlador = new Controlador_News_Eventos(fragment, items);
+        recycler.addOnItemTouchListener(controlador);
 
         return view;
     }
@@ -105,9 +109,7 @@ public class Noticias_Eventos_Fragment extends Model_Fragment {
         @Override
         protected void onPostExecute(Void unused) {
             adapter.swapCursor(cursor);
-            recycler.setAdapter(adapter);
-            controlador = new Controlador_News_Eventos(fragment, items);
-            recycler.addOnItemTouchListener(controlador);
+            controlador.setItems(items);
         }
     }
 }

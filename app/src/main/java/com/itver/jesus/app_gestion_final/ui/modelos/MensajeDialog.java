@@ -48,9 +48,8 @@ public class MensajeDialog {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                VisualizaDataSource bd = VisualizaDataSource.getInstance(context);
+                                VisualizaDataSource bd = new VisualizaDataSource(context);
                                 bd.eliminarNoticiaDeLista(ParseUser.getCurrentUser().getUsername(), noticia);
-//                                Toast.makeText(context, "Presionado eliminar\nEliminar noticia " + noticia.getId(), Toast.LENGTH_SHORT).show();
                             }
                         })
                 .setNegativeButton("CANCELAR",
