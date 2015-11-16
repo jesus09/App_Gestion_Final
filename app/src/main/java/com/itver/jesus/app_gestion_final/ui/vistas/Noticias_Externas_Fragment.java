@@ -60,11 +60,10 @@ public class Noticias_Externas_Fragment extends Model_Fragment {
         adapter = new AdapterCursor_Noticias(getContext(), preferencias.getMiniaturas());
         recycler.setAdapter(adapter);
 
-        Log.e("gestion", "onCreateView EXTERNAS !!!!! ");
-        new CargaDatos().execute();
-
-        controlador = new Controlador_News_Externos(fragment, items);
+        controlador = new Controlador_News_Externos(this, items);
         recycler.addOnItemTouchListener(controlador);
+
+        cargarDatos();
 
         return view;
     }
@@ -80,31 +79,30 @@ public class Noticias_Externas_Fragment extends Model_Fragment {
         super.onResume();
         // Actualizar cantidad de items
         int cantidadItems = preferencias.getCantidadFilasList();
-//        Log.e("gestion", "onResume EXTERNAS !!!!! ");
-//        new CargaDatos().execute();
+        cargarDatos();
     }
 
-    private class CargaDatos extends AsyncTask<Void, Void, Void> {
 
-        @Override
-        protected Void doInBackground(Void... params) {
-            bd = new VisualizaDataSource(getContext());
+    private void cargarDatos() {
+        bd = new VisualizaDataSource(getContext());
 
-            String usuario = preferencias.getUserName();
-            String[] departamentos = preferencias.getDepartamentosForUser();
-            String[] categorias = preferencias.getCategoriasForExternsForUser();
-            String[] noCategorias = Preferencias.CATEGORIAS_EVENTOS;
+        String usuario = preferencias.getUserName();
+        String[] departamentos = preferencias.getDepartamentosForUser();
+        String[] categorias = preferencias.getCategoriasForExternsForUser();
+        String[] noCategorias = Preferencias.CATEGORIAS_EVENTOS;
 
-            cursor = bd.getCursorWithPreferences(usuario, departamentos, categorias, noCategorias);
-            items = bd.getListWithPreferences(usuario, departamentos, categorias, noCategorias);
+        items = bd.getListWithPreferences(usuario, departamentos, categorias, noCategorias);
+        adapter.swapCursor(bd.getCursorWithPreferences(usuario, departamentos, categorias, noCategorias));
 
-            return null;
+        int scrollPosition = 0;
+
+        if (recycler.getLayoutManager() != null) {
+            scrollPosition = ((LinearLayoutManager) recycler.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
+            Log.e("gestion", "Posición : " + scrollPosition);
         }
 
-        @Override
-        protected void onPostExecute(Void unused) {
-            adapter.swapCursor(cursor);
-            controlador.setItems(items);
-        }
+        recycler.setAdapter(adapter);
+        recycler.scrollToPosition(scrollPosition);
+        controlador.setItems(items);
     }
 }

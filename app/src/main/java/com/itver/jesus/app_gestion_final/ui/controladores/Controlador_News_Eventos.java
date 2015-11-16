@@ -36,7 +36,7 @@ public class Controlador_News_Eventos implements RecyclerView.OnItemTouchListene
     private ArrayList<Noticia> items;
     private RecyclerView recyclerView;
 
-    public Controlador_News_Eventos(final Model_Fragment fragment, ArrayList<Noticia> noticias) {
+    public Controlador_News_Eventos(Model_Fragment fragment, ArrayList<Noticia> noticias) {
         activity = fragment.getActivity();
         context = activity.getApplicationContext();
         adapterCursor_noticias = fragment.getAdapter();
@@ -88,8 +88,6 @@ public class Controlador_News_Eventos implements RecyclerView.OnItemTouchListene
 
         String user = preferencias.getUserName();
         bd.noticiaVista(user, items.get(position));
-
-        adapterCursor_noticias.notifyDataSetChanged();
 
         Noticia_FullActivity.createInstance(context, items.get(position));
     }

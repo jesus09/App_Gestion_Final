@@ -36,7 +36,7 @@ public class Controlador_News_Externos implements RecyclerView.OnItemTouchListen
     private ArrayList<Noticia> items;
     private RecyclerView recyclerView;
 
-    public Controlador_News_Externos(final Model_Fragment fragment, ArrayList<Noticia> noticias) {
+    public Controlador_News_Externos(Model_Fragment fragment, ArrayList<Noticia> noticias) {
         activity = fragment.getActivity();
         context = activity.getApplicationContext();
         adapterCursor_noticias = fragment.getAdapter();
@@ -83,12 +83,11 @@ public class Controlador_News_Externos implements RecyclerView.OnItemTouchListen
     }
 
     private void mostrarNoticia(int position) {
-//        VisualizaDataSource bd = new VisualizaDataSource(context);
-//        Preferencias preferencias = new Preferencias(context);
-//
-//        String user = preferencias.getUserName();
-//        bd.noticiaVista(user, items.get(position));
-        new UpdateAdapterTask(position).execute();
+        VisualizaDataSource bd = new VisualizaDataSource(context);
+        Preferencias preferencias = new Preferencias(context);
+        String user = preferencias.getUserName();
+        bd.noticiaVista(user, items.get(position));
+
         Noticia_FullActivity.createInstance(context, items.get(position));
     }
 
@@ -131,43 +130,6 @@ public class Controlador_News_Externos implements RecyclerView.OnItemTouchListen
         return builder.create();
     }
 
-    private class UpdateAdapterTask extends AsyncTask<Void, Void, Void> {
-
-        private Cursor cursor;
-        private int position;
-
-        public UpdateAdapterTask(int position) {
-            this.position = position;
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-
-            VisualizaDataSource bd = new VisualizaDataSource(context);
-            Preferencias preferencias = new Preferencias(context);
-
-            String user = preferencias.getUserName();
-            bd.noticiaVista(user, items.get(position));
-            Log.e("gestion", "Item : " + position);
-
-            String usuario = preferencias.getUserName();
-            String[] departamentos = preferencias.getDepartamentosForUser();
-            String[] categorias = preferencias.getCategoriasForExternsForUser();
-            String[] noCategorias = Preferencias.CATEGORIAS_EVENTOS;
-
-            cursor = bd.getCursorWithPreferences(usuario, departamentos, categorias, noCategorias);
-            items = bd.getListWithPreferences(usuario, departamentos, categorias, noCategorias);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            Log.e("gestion","Cambiando el cursor");
-            adapterCursor_noticias.swapCursor(cursor);
-            adapterCursor_noticias.notifyDataSetChanged();
-        }
-    }
-
     /*
         private void actualizarLista() {
             VisualizaDataSource bd = new VisualizaDataSource(context);
@@ -180,6 +142,7 @@ public class Controlador_News_Externos implements RecyclerView.OnItemTouchListen
             adapterCursor_noticias.swapCursor(bd.getCursorWithPreferences(usuario, departamentos, categorias, noCategorias));
         }
     */
+
     public ArrayList<Noticia> getItems() {
         return items;
     }
