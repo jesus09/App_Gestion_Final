@@ -18,7 +18,7 @@ public class API {
         List<NoticiaClass> noticias = new LinkedList<NoticiaClass>();
 
         ParseQuery<NoticiaClass> consulta = ParseQuery.getQuery(NoticiaClass.class);
-        consulta.orderByDescending("updatedAt");
+        consulta.orderByAscending("fecha");
 
         try {
             noticias = consulta.find();

@@ -100,7 +100,9 @@ public class VisualizaDataSource {
                 + NewsDataSource.ColumnNoticias.CONTENIDO_NOTIC + " , "
                 + NewsDataSource.ColumnNoticias.DEPARTAMENTO + " , "
                 + NewsDataSource.ColumnNoticias.CATEGORIA + " ,"
-                + ColumnVisualiza.VISTO + " ";
+//                + ColumnVisualiza.VISTO + " ";
+                + ColumnVisualiza.VISTO + " ,"
+                + ColumnVisualiza.ID_VISUALIZA + " ";
         consulta += " FROM " + NewsDataSource.NEWS_TABLE_NAME + " , " + VISUALIZA_TABLE_NAME;
         consulta += " WHERE " + ColumnVisualiza.FK_USER + " = \"" + usuario + "\"";
         consulta += " AND " + VISUALIZA_TABLE_NAME + "." + ColumnVisualiza.FK_NOTIC + " = " + NewsDataSource.NEWS_TABLE_NAME + "." + NewsDataSource.ColumnNoticias.ID_NOTIC;
@@ -109,6 +111,10 @@ public class VisualizaDataSource {
         consulta += getPreferenciasDepartamentos(departamentos);
 
         consulta += getPreferenciasCategorias(categorias, noCategorias);
+
+//        consulta += " order  by datetime(" + NewsDataSource.ColumnNoticias.FECHA_NOTIC + ") ASC";
+        consulta += " GROUP BY " + NewsDataSource.NEWS_TABLE_NAME + "." + NewsDataSource.ColumnNoticias.ID_NOTIC;
+        consulta += " order  by " + ColumnVisualiza.ID_VISUALIZA + " DESC";
 
         Log.e("gestion", "CONSULTA :" + consulta);
 
@@ -138,25 +144,27 @@ public class VisualizaDataSource {
     }
 
     private String getPreferenciasCategorias(String[] categorias, String[] noCategorias) {
-        StringBuilder condicionDepartamentos = new StringBuilder();
+        StringBuilder condicionCategorias = new StringBuilder();
 
         if (categorias.length > 0) {
-            condicionDepartamentos.append(" AND (" + NewsDataSource.ColumnNoticias.CATEGORIA + " = ").append(categorias[0]);
+            condicionCategorias.append(" AND (" + NewsDataSource.ColumnNoticias.CATEGORIA + " = ").append(categorias[0]);
 
             for (int i = 1; i < categorias.length; i++) {
-                condicionDepartamentos.append(" OR " + NewsDataSource.ColumnNoticias.CATEGORIA + " = ").append(categorias[i]);
+                condicionCategorias.append(" OR " + NewsDataSource.ColumnNoticias.CATEGORIA + " = ").append(categorias[i]);
             }
-            condicionDepartamentos.append(")");
+//            condicionCategorias.append(")");
+            condicionCategorias.append(" OR " + NewsDataSource.ColumnNoticias.CATEGORIA + " <> ").append(noCategorias[0]);
+        } else {
+            // Excluyendo este tipo de noticias.
+            condicionCategorias.append(" AND (" + NewsDataSource.ColumnNoticias.CATEGORIA + " <> ").append(noCategorias[0]);
         }
 
-        // Excluyendo este tipo de noticias.
-        condicionDepartamentos.append(" AND (" + NewsDataSource.ColumnNoticias.CATEGORIA + " <> ").append(noCategorias[0]);
         for (int i = 1; i < noCategorias.length; i++) {
-            condicionDepartamentos.append(" OR " + NewsDataSource.ColumnNoticias.CATEGORIA + " <> ").append(noCategorias[i]);
+            condicionCategorias.append(" OR " + NewsDataSource.ColumnNoticias.CATEGORIA + " <> ").append(noCategorias[i]);
         }
-        condicionDepartamentos.append(")");
+        condicionCategorias.append(")");
 
-        return condicionDepartamentos.toString();
+        return condicionCategorias.toString();
     }
 
     private String getPreferenciasDepartamentos(String[] departamentos) {

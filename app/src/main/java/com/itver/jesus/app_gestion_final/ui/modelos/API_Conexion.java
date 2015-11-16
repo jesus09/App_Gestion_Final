@@ -35,10 +35,14 @@ public class API_Conexion {
         return true;
     }
 
-    public boolean insertarNoticiaEnBD(String usuario, Noticia noticia) {
+    public boolean noticiaEnBD(String usuario, Noticia noticia) {
 
         NewsDataSource newsTable = new NewsDataSource(context);
         VisualizaDataSource visualizaTable = new VisualizaDataSource(context);
+
+        noticia.setTitulo(noticia.getFecha());
+        String fecha = formatearFecha(noticia.getFecha());
+        noticia.setFecha(fecha);
 
         String idNoticia = newsTable.insertarNoticia(noticia);
 

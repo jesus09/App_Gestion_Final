@@ -11,7 +11,9 @@ import android.util.Log;
 
 import com.itver.jesus.app_gestion_final.R;
 import com.itver.jesus.app_gestion_final.database.NewsDataSource;
+import com.itver.jesus.app_gestion_final.ui.modelos.API_Conexion;
 import com.itver.jesus.app_gestion_final.ui.modelos.Noticia;
+import com.itver.jesus.app_gestion_final.ui.modelos.Preferencias;
 import com.itver.jesus.app_gestion_final.ui.vistas.MainActivity;
 import com.parse.ParsePushBroadcastReceiver;
 
@@ -55,8 +57,9 @@ public class Notificaciones_Push extends ParsePushBroadcastReceiver {
                 && pushData.has(ID_FECHA) && pushData.has(ID_AUTOR);
 
         if (notif) {
-            String titulo = pushData.optString("titulo");
-            String mensaje = pushData.optString("mensaje");
+            String titulo = pushData.optString(TITULO_NOTIF);
+            String mensaje = pushData.optString(MENSAJE_NOTIF);
+/*
             String idNoticia = pushData.optString(ID_NOTICIA);
             int imagen = pushData.optInt(ID_IMAGEN);
             String tituloNoticia = pushData.optString(ID_TITULO);
@@ -68,9 +71,13 @@ public class Notificaciones_Push extends ParsePushBroadcastReceiver {
 
             Noticia noticia = new Noticia(idNoticia, imagen, tituloNoticia, autorNoticia,
                     fechaNoticia, contenidoNoticia, departamentoNoticia, categoriaNoticia);
+*/
+            API_Conexion api_conexion = new API_Conexion(context);
+            Preferencias preferencias = new Preferencias(context);
 
-            NewsDataSource bd = new NewsDataSource(context);
-            bd.insertarNoticia(noticia);
+            String usuario = preferencias.getUserName();
+            api_conexion.insertarNoticiasEnBD(usuario);
+//            api_conexion.noticiaEnBD(usuario , noticia);
 
             Intent resultIntent = new Intent(context, MainActivity.class);
             PendingIntent resultPendingIntent =
