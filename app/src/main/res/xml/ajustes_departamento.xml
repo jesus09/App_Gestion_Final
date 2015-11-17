@@ -13,6 +13,7 @@
         android:title="@string/ajustes_title_departamentos">
 
         <MultiSelectListPreference
+            android:defaultValue="@array/ajustes_departamentos_valores"
             android:dialogTitle="@string/dialogTitle"
             android:entries="@array/ajustes_departamentos_entradas"
             android:entryValues="@array/ajustes_departamentos_valores"

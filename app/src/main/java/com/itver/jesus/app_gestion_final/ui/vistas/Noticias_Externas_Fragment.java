@@ -1,10 +1,7 @@
 package com.itver.jesus.app_gestion_final.ui.vistas;
 
-import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,12 +12,10 @@ import android.view.ViewGroup;
 import com.itver.jesus.app_gestion_final.R;
 import com.itver.jesus.app_gestion_final.database.VisualizaDataSource;
 import com.itver.jesus.app_gestion_final.ui.adaptadores.AdapterCursor_Noticias;
-import com.itver.jesus.app_gestion_final.ui.controladores.Controlador_News_Eventos;
 import com.itver.jesus.app_gestion_final.ui.controladores.Controlador_News_Externos;
 import com.itver.jesus.app_gestion_final.ui.modelos.Model_Fragment;
 import com.itver.jesus.app_gestion_final.ui.modelos.Noticia;
 import com.itver.jesus.app_gestion_final.ui.modelos.Preferencias;
-import com.parse.ParseUser;
 
 import java.util.ArrayList;
 

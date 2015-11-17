@@ -106,8 +106,6 @@ public class Lista_Noticias_Fragment extends Fragment {
 
         if (savedInstanceState != null) {
             tab_param = savedInstanceState.getInt(TAB_SELECTED);
-            Log.e("gestion", "!!!onActivityCreated :  " + tab_param);
-//            viewPager.setCurrentItem(tab_param);
         }
     }
 

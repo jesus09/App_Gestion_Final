@@ -5,6 +5,7 @@
         android:title="@string/ajustes_title_areas">
 
         <MultiSelectListPreference
+            android:defaultValue="@array/ajustes_areas_valores"
             android:dialogTitle="@string/dialogTitle"
             android:entries="@array/ajustes_areas_entradas"
             android:entryValues="@array/ajustes_areas_valores"

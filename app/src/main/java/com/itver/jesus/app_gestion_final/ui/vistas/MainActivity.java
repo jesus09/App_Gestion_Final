@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -35,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        PreferenceManager.setDefaultValues(this, R.xml.ajustes_departamento, true);
+        PreferenceManager.setDefaultValues(this, R.xml.ajustes_categorias, true);
+
         agregarToolbar();
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -42,34 +46,22 @@ public class MainActivity extends AppCompatActivity {
 
         if (navigationView != null) {
             prepararDrawer(navigationView);
-            // Seleccionar item por defecto
-//            int item = savedInstanceState.getInt(ITEM_SELECTED);
-//            seleccionarItem(navigationView.getMenu().getItem(0));
         }
 
         if (savedInstanceState == null) {
             seleccionarItem(navigationView.getMenu().getItem(0));
         }
-/*
-        if (savedInstanceState != null) {
-            int item = savedInstanceState.getInt(ITEM_SELECTED);
-            Log.e("gestion", "en onCreate " + item);
-            seleccionarItem(navigationView.getMenu().getItem(item));
-        }
-*/
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.e("gestion", "onSaveInstance :  " + param);
         outState.putInt(ITEM_SELECTED, param);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle estadoGuardado) {
         super.onRestoreInstanceState(estadoGuardado);
-        Log.e("gestion", "onRestoreInstanceState :  " + param);
         int item = estadoGuardado.getInt(ITEM_SELECTED);
         seleccionarItem(navigationView.getMenu().getItem(item));
     }
@@ -89,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
-//                        menuItem.setChecked(true);
                         seleccionarItem(menuItem);
                         drawerLayout.closeDrawers();
                         return true;
