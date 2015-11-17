@@ -10,9 +10,7 @@ import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
 import com.itver.jesus.app_gestion_final.R;
-import com.itver.jesus.app_gestion_final.database.NewsDataSource;
 import com.itver.jesus.app_gestion_final.ui.modelos.API_Conexion;
-import com.itver.jesus.app_gestion_final.ui.modelos.Noticia;
 import com.itver.jesus.app_gestion_final.ui.modelos.Preferencias;
 import com.itver.jesus.app_gestion_final.ui.vistas.MainActivity;
 import com.parse.ParsePushBroadcastReceiver;
@@ -54,7 +52,8 @@ public class Notificaciones_Push extends ParsePushBroadcastReceiver {
 
         boolean notif = pushData.has(TITULO_NOTIF) && pushData.has(MENSAJE_NOTIF)
                 && pushData.has(ID_NOTICIA) && pushData.has(ID_TITULO) && pushData.has(ID_CONTENIDO)
-                && pushData.has(ID_FECHA) && pushData.has(ID_AUTOR);
+                && pushData.has(ID_FECHA) && pushData.has(ID_AUTOR) && pushData.has(ID_DEPARTAMENTO)
+                && pushData.has(ID_CATEGORIA);
 
         if (notif) {
             String titulo = pushData.optString(TITULO_NOTIF);
