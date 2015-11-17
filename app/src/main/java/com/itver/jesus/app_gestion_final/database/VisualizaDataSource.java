@@ -152,18 +152,18 @@ public class VisualizaDataSource {
             for (int i = 1; i < categorias.length; i++) {
                 condicionCategorias.append(" OR " + NewsDataSource.ColumnNoticias.CATEGORIA + " = ").append(categorias[i]);
             }
-//            condicionCategorias.append(")");
-            condicionCategorias.append(" OR " + NewsDataSource.ColumnNoticias.CATEGORIA + " <> ").append(noCategorias[0]);
+            condicionCategorias.append(")");
+//            condicionCategorias.append(" OR " + NewsDataSource.ColumnNoticias.CATEGORIA + " <> ").append(noCategorias[0]);
         } else {
             // Excluyendo este tipo de noticias.
-            condicionCategorias.append(" AND (" + NewsDataSource.ColumnNoticias.CATEGORIA + " <> ").append(noCategorias[0]);
+//            condicionCategorias.append(" AND (" + NewsDataSource.ColumnNoticias.CATEGORIA + " <> ").append(noCategorias[0]);
         }
-
+/*
         for (int i = 1; i < noCategorias.length; i++) {
             condicionCategorias.append(" OR " + NewsDataSource.ColumnNoticias.CATEGORIA + " <> ").append(noCategorias[i]);
         }
         condicionCategorias.append(")");
-
+*/
         return condicionCategorias.toString();
     }
 
