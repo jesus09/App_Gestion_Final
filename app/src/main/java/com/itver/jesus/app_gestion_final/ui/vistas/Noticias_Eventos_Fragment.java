@@ -76,6 +76,10 @@ public class Noticias_Eventos_Fragment extends Model_Fragment {
     }
 
     private void cargarDatos() {
+        cargarDatosParaUsuario();
+    }
+
+    private void cargarDatosParaUsuario() {
         bd = new VisualizaDataSource(getContext());
 
         String usuario = preferencias.getUserName();

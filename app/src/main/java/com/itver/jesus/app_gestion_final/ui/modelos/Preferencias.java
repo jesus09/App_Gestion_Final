@@ -28,6 +28,12 @@ public class Preferencias {
         this.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
+    public void setCuenta() {
+        setUsername("");
+        setClaveUser("");
+        setClaveAnterior("");
+    }
+
     public void setUsername(String usuario) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("username", usuario);
@@ -48,28 +54,23 @@ public class Preferencias {
     }
 
     public boolean getMiniaturas() {
-        boolean miniaturasPref = sharedPreferences.getBoolean("miniaturas", true);
-        return miniaturasPref;
+        return sharedPreferences.getBoolean("miniaturas", true);
     }
 
     public String getUserName() {
-        String usuario = sharedPreferences.getString("username", "");
-        return usuario;
+        return sharedPreferences.getString("username", "");
     }
 
     public int getCantidadFilasList() {
-        int cantidadItems = Integer.parseInt(sharedPreferences.getString("numNoticias", "8"));
-        return cantidadItems;
+        return Integer.parseInt(sharedPreferences.getString("numNoticias", "8"));
     }
 
     public String getClaveUser() {
-        String clave = sharedPreferences.getString("clave_username", "");
-        return clave;
+        return sharedPreferences.getString("clave_username", "");
     }
 
     public String getClaveAnterior() {
-        String clave = sharedPreferences.getString("clave_anterior", "");
-        return clave;
+        return sharedPreferences.getString("clave_anterior", "");
     }
 
     public String[] getDepartamentosForUser() {
@@ -91,9 +92,9 @@ public class Preferencias {
 
         Iterator it = listaDepartamentos.iterator();
 
-        for (int i = 0; i < values.length; i++) {
-            if (listaDepartamentos.contains(values[i])) {
-                categorias.add(values[i]);
+        for (String value : values) {
+            if (listaDepartamentos.contains(value)) {
+                categorias.add(value);
             }
         }
 
@@ -114,9 +115,9 @@ public class Preferencias {
 
         Iterator it = listaDepartamentos.iterator();
 
-        for (int i = 0; i < values.length; i++) {
-            if (listaDepartamentos.contains(values[i])) {
-                categorias.add(values[i]);
+        for (String value : values) {
+            if (listaDepartamentos.contains(value)) {
+                categorias.add(value);
             }
         }
 

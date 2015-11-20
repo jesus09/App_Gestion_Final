@@ -3,12 +3,10 @@ package com.itver.jesus.app_gestion_final.ui.vistas;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -16,32 +14,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.itver.jesus.app_gestion_final.R;
-import com.itver.jesus.app_gestion_final.database.CalendarioDataSource;
-import com.itver.jesus.app_gestion_final.database.NewsDataSource;
 import com.itver.jesus.app_gestion_final.database.UsuariosDataSource;
-import com.itver.jesus.app_gestion_final.database.VisualizaDataSource;
-import com.itver.jesus.app_gestion_final.parse.API;
-import com.itver.jesus.app_gestion_final.parse.CalendarioClass;
-import com.itver.jesus.app_gestion_final.parse.NoticiaClass;
 import com.itver.jesus.app_gestion_final.ui.modelos.API_Conexion;
-import com.itver.jesus.app_gestion_final.ui.modelos.Calendario;
-import com.itver.jesus.app_gestion_final.ui.modelos.Noticia;
 import com.itver.jesus.app_gestion_final.ui.modelos.Preferencias;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-
 public class Login_Activity extends AppCompatActivity {
 
     private ProgressDialog progreso;
     private Context context;
-    private List<NoticiaClass> noticias;
-    private List<CalendarioClass> fechas;
 
     private String usuario;
     private String clave;
@@ -52,13 +35,34 @@ public class Login_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_login_);
         context = this;
         Button logear = (Button) findViewById(R.id.button_login_ingresar);
-        logear.setOnClickListener(new Escuchador_Login());
+        Button invitado = (Button) findViewById(R.id.button_login_invitado);
+
+        Escuchador_Login escuchador = new Escuchador_Login();
+        logear.setOnClickListener(escuchador);
+        invitado.setOnClickListener(escuchador);
     }
 
     class Escuchador_Login implements View.OnClickListener {
 
         @Override
         public void onClick(View view) {
+
+            switch (view.getId()) {
+                case R.id.button_login_ingresar:
+                    ingresarPorUsuario();
+                    break;
+                case R.id.button_login_invitado:
+                    mostrarInvitado();
+                    break;
+            }
+        }
+
+        private void mostrarInvitado() {
+            Intent invitado = new Intent(getApplicationContext(), InvitadoActivity.class);
+            startActivity(invitado);
+        }
+
+        private void ingresarPorUsuario() {
             EditText inputUser = (EditText) findViewById(R.id.input_user);
             EditText inputPass = (EditText) findViewById(R.id.input_pass);
 

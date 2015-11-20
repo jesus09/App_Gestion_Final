@@ -96,14 +96,18 @@
 
     <string name="pref_title_system_sync_settings">System sync settings</string>
 
+    <string name="texto_invitado">Noti~Tec te da la bienvenida y desea que todos sean participes en la comunidad tecnológica.\n\n
+    Si deseas usar la aplicación entra al siguiente link, te llevara para el llenado del formulario de registro,
+        un administrador se encargará de comprobar tus datos y enviarte tu usuario y contraseña.\n\n
+        www.google.com.mx\n\n
+        Gracias por tú atención.
+    </string>
+
     <!-- Example settings for Notifications -->
     <string name="pref_header_notifications">Notifications</string>
-
     <string name="pref_title_new_message_notifications">New message notifications</string>
-
     <string name="pref_title_ringtone">Ringtone</string>
     <string name="pref_ringtone_silent">Silent</string>
-
     <string name="pref_title_vibrate">Vibrate</string>
 
 </resources>

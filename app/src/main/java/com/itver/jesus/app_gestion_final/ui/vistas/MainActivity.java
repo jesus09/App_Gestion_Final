@@ -19,6 +19,7 @@ import android.view.MenuItem;
 
 import com.itver.jesus.app_gestion_final.R;
 import com.itver.jesus.app_gestion_final.ui.ajustes.Ajustes_Activity;
+import com.itver.jesus.app_gestion_final.ui.modelos.Preferencias;
 import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
@@ -127,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (networkInfo != null && networkInfo.isConnected()) {
             ParseUser.logOut();
+            Preferencias preferencias = new Preferencias(getApplicationContext());
+            preferencias.setCuenta();
         }
         iniciarLogin();
         finish();

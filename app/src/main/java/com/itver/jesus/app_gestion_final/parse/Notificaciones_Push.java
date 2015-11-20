@@ -104,6 +104,9 @@ public class Notificaciones_Push extends ParsePushBroadcastReceiver {
         } else {
             return null;
         }
+
+        // PARA EDITAR UNA NOTICIA FALTA AGREGAR UN MÉTODO QUE EDITE NA NOTICIA EN LA BD Y AGREGAR UN ATRIBUTO EN EL JSON
+        // PARA SABER SI ES INSERTAR O EDITAR.
     }
 }
 

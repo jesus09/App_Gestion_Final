@@ -100,7 +100,6 @@ public class NewsDataSource {
 
         Cursor cursor = getCursorAllNews();
         while (cursor.moveToNext()) {
-
             noticias.add(new Noticia(
                     cursor.getString(0), // ID
                     cursor.getInt(1),    // Imagen
