@@ -3,8 +3,6 @@ package com.itver.jesus.app_gestion_final.database;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.net.Uri;
-import android.util.Log;
 
 /**
  * Clase de la base de datos.
@@ -15,6 +13,9 @@ public class DataBase_Helper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "notitec_db";
     private static final int DATABASE_VERSION = 1;
 
+    /**
+     * Array [] tipo String con el nombre de las tablas en la base de datos.
+     */
     public static final String[] TABLES = {
             NewsDataSource.NEWS_TABLE_NAME,
             UsuariosDataSource.USERS_TABLE_NAME,
@@ -22,6 +23,9 @@ public class DataBase_Helper extends SQLiteOpenHelper {
             CalendarioDataSource.CALENDARIO_TABLE_NAME
     };
 
+    /**
+     * Array [] tipo String con el Scrip para crear cada una de las tablas contenidas en el Array.
+     */
     public static final String[] SCRIP_SCHEMA_DB = {
             NewsDataSource.CREATE_NEWS_SCRIPT,
             UsuariosDataSource.CREATE_USERS_SCRIPT,
@@ -33,6 +37,11 @@ public class DataBase_Helper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /**
+     * Inicia la creacion de la base de datos.
+     *
+     * @param db SQLiteDatabase para la ejecucion de las operaciones CRUD.
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         for (int i = 0; i < SCRIP_SCHEMA_DB.length; i++) {
@@ -41,6 +50,13 @@ public class DataBase_Helper extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Se llama cuando la base de datos actualiza su version.
+     *
+     * @param db         Base de datos SQLite.
+     * @param oldVersion int version anterior de la base de datos.
+     * @param newVersion int version nueva de la base de datos.
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Se llama cuando se cambia de versión

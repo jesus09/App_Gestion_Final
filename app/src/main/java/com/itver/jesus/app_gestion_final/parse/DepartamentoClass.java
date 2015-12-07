@@ -11,19 +11,29 @@ import com.parse.ParseObject;
 @ParseClassName("Departamentos")
 public class DepartamentoClass extends ParseObject {
 
-    private String id;
-    private int id_Departamento;
-    private String nombre;
-    private String descripcion;
-
+    /**
+     * Retorna la descripción del Departamento.
+     *
+     * @return String descripcion del departamento
+     */
     public String getDescripcion() {
         return getString("descripcion");
     }
 
+    /**
+     * Retorna el nombre del Departamento
+     *
+     * @return String nombre del departamento.
+     */
     public String getNombre() {
         return getString("nombre");
     }
 
+    /**
+     * Retorna el atributo Id creado en Parse.com de la clase Departamento.
+     *
+     * @return int id del Departamento.
+     */
     public int getId_Departamento() {
         try {
             return fetchIfNeeded().getInt("id_Departamento");
@@ -32,6 +42,11 @@ public class DepartamentoClass extends ParseObject {
         }
     }
 
+    /***
+     * Retorna el objectId del Departamento de la clase en Parse.com
+     *
+     * @return String objectId del Departamento.
+     */
     public String getDepartamentoId() {
         return getObjectId();
     }

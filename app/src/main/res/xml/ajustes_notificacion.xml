@@ -3,14 +3,14 @@
 
     <PreferenceCategory
         android:key="ajustes_notificacion"
-        android:title="@string/ajustes_title_notificación">
+        android:title="@string/ajustes_title_notificacion">
 
         <MultiSelectListPreference
-            android:key="listaMultiple"
-            android:title="@string/ajustes_title_departamentos"
-            android:summary="@string/ajustes_ayuda_departamentos"
             android:dialogTitle="Indicar Pais"
             android:entries="@array/pais"
-            android:entryValues="@array/codigopais" />
+            android:entryValues="@array/codigopais"
+            android:key="listaMultiple"
+            android:summary="@string/ajustes_ayuda_departamentos"
+            android:title="@string/ajustes_title_departamentos" />
     </PreferenceCategory>
 </PreferenceScreen>

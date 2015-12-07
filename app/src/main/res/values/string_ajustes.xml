@@ -5,7 +5,7 @@
 
     <!-- Titulos de Grupos-->
     <string name="ajustes_title_generales">General</string>
-    <string name="ajustes_title_notificación">Notificaciones</string>
+    <string name="ajustes_title_notificacion">Notificaciones</string>
     <string name="ajustes_title_departamentos">Departamentos</string>
     <string name="ajustes_title_areas">Áreas</string>
     <string name="ajustes_title_cuenta">Cuenta</string>

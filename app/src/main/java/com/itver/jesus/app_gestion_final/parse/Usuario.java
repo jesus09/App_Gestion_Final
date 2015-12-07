@@ -11,15 +11,20 @@ import com.parse.ParseUser;
 @ParseClassName("_User")
 public class Usuario extends ParseUser {
 
-    private String id_Usuario;
-    private String nombre;
-    private String apPat;
-    private String apMat;
-
+    /**
+     * Retorna el objectId en la clase _User de Parse.com
+     *
+     * @return String objectId.
+     */
     public String getId_Usuario() {
         return getObjectId();
     }
 
+    /**
+     * Retorna el nombre del usuario en la clase _User de Parse.com.
+     *
+     * @return String nombre del usuario.
+     */
     public String getNombre() {
         try {
             return fetchIfNeeded().getString("nombre");
@@ -28,6 +33,11 @@ public class Usuario extends ParseUser {
         }
     }
 
+    /**
+     * Retorna el apellido paterno del usuario en la clase _User de Parse.com.
+     *
+     * @return String con el apellido Paterno del usuario.
+     */
     public String getApPat() {
         try {
             return fetchIfNeeded().getString("apPat");
@@ -36,6 +46,11 @@ public class Usuario extends ParseUser {
         }
     }
 
+    /**
+     * Retorna el apellido paterno del usuario en la clase _User de Parse.com
+     *
+     * @return String con el apellido Materno del usuario.
+     */
     public String getApMat() {
         try {
             return fetchIfNeeded().getString("apMat");

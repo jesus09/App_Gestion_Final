@@ -10,14 +10,29 @@ import com.itver.jesus.app_gestion_final.ui.modelos.Noticia;
 
 import java.util.ArrayList;
 
+/**
+ * Clase modelo de la tabla Visualize en SQLite.
+ */
 public class VisualizaDataSource {
 
-    //Metainformación de la base de datos
+    /**
+     * Atributo Objeto String con el nombre de la Tabla.
+     */
     public static final String VISUALIZA_TABLE_NAME = "Visualize";
+
+    /**
+     * Atributo Objeto String como tipo de dato TEXT admitido en la tabla.
+     */
     public static final String STRING_TYPE = "TEXT";
+
+    /**
+     * Atributo Objeto String como tipo de dato INTEGER admitido en la tabla.
+     */
     public static final String INT_TYPE = "INTEGER";
 
-    //Campos de la tabla Visualiza
+    /**
+     * Clase contenedora de variables estaticas que componen la tabla Visualize.
+     */
     public static class ColumnVisualiza {
 
         public static final String ID_VISUALIZA = "id_visualiza";
@@ -27,7 +42,9 @@ public class VisualizaDataSource {
         public static final String FK_USER = UsuariosDataSource.ColumnUsuarios.ID_USER;
     }
 
-    //Script de Creación de la tabla Visualiza
+    /**
+     * Script de Creacion de la tabla Users.
+     */
     public static final String CREATE_VISUALIZA_SCRIPT
             = "CREATE TABLE " + VISUALIZA_TABLE_NAME + "("
             + ColumnVisualiza.ID_VISUALIZA + " " + INT_TYPE + " PRIMARY KEY AUTOINCREMENT, "
@@ -39,10 +56,6 @@ public class VisualizaDataSource {
             + UsuariosDataSource.ColumnUsuarios.ID_USER + ") ,"
             + " FOREIGN KEY(" + ColumnVisualiza.FK_NOTIC + ") REFERENCES " + NewsDataSource.NEWS_TABLE_NAME + "("
             + NewsDataSource.ColumnNoticias.ID_NOTIC + ") )";
-
-    public static void imprimirScrip() {
-        System.out.println(CREATE_VISUALIZA_SCRIPT);
-    }
 
     private DataBase_Helper helper;
     private SQLiteDatabase bd;
@@ -74,22 +87,49 @@ public class VisualizaDataSource {
         return content;
     }
 
+    /**
+     * Cambia el estado del atributo en la tabla Visualize de la columna visto.
+     *
+     * @param usuario String username del Usuario.
+     * @param noticia Objeto Noticia con la noticia vista.
+     */
     public void noticiaVista(String usuario, Noticia noticia) {
         String where = ColumnVisualiza.FK_NOTIC + " = \"" + noticia.getId() + "\"";
         where += "AND " + ColumnVisualiza.FK_USER + " = \"" + usuario + "\"";
         bd.update(VISUALIZA_TABLE_NAME, contentValuesUpdateVistoNews(), where, null);
     }
 
+    /**
+     * Inserta a un Usuario la noticia recibida.
+     *
+     * @param idUsuario String username del Usuario.
+     * @param idNoticia String idNoticia llave de Noticia.
+     */
     public void insertarAUsuario_Noticia(String idUsuario, String idNoticia) {
         bd.insert(VISUALIZA_TABLE_NAME, null, contentValuesNews(idUsuario, idNoticia));
     }
 
+    /**
+     * Elimina una noticia de la Tabla Visualize.
+     *
+     * @param usuario String username del Usuario.
+     * @param noticia Objeto Noticia con la Noticia a eliminar.
+     */
     public void eliminarNoticiaDeLista(String usuario, Noticia noticia) {
         String where = ColumnVisualiza.FK_USER + " = \"" + usuario + "\"";
         where += " AND " + ColumnVisualiza.FK_NOTIC + " = \"" + noticia.getId() + "\"";
         bd.update(VISUALIZA_TABLE_NAME, contentValuesUpdateNews(), where, null);
     }
 
+    /**
+     * Retorna Cursor con noticias filtradas por las preferencias del usuario.
+     *
+     * @param usuario       String username del Usuario.
+     * @param departamentos Array [] tipo String con las preferencias en los departamentos.
+     * @param categorias    Array [] tipo String con las preferencias en las categorias.
+     * @param noCategorias  Array [] tipo String con las categorias que no se encuentran habilitadas.
+     * @return Objeto Cursor con las noticias.
+     */
     public Cursor getCursorWithPreferences(String usuario, String[] departamentos, String[] categorias, String[] noCategorias) {
 
         String consulta = "SELECT DISTINCT (" + NewsDataSource.NEWS_TABLE_NAME + "." + NewsDataSource.ColumnNoticias.ID_NOTIC + ") , "
@@ -100,7 +140,6 @@ public class VisualizaDataSource {
                 + NewsDataSource.ColumnNoticias.CONTENIDO_NOTIC + " , "
                 + NewsDataSource.ColumnNoticias.DEPARTAMENTO + " , "
                 + NewsDataSource.ColumnNoticias.CATEGORIA + " ,"
-//                + ColumnVisualiza.VISTO + " ";
                 + ColumnVisualiza.VISTO + " ,"
                 + ColumnVisualiza.ID_VISUALIZA + " ";
         consulta += " FROM " + NewsDataSource.NEWS_TABLE_NAME + " , " + VISUALIZA_TABLE_NAME;
@@ -112,7 +151,6 @@ public class VisualizaDataSource {
 
         consulta += getPreferenciasCategorias(categorias, noCategorias);
 
-//        consulta += " order  by datetime(" + NewsDataSource.ColumnNoticias.FECHA_NOTIC + ") ASC";
         consulta += " GROUP BY " + NewsDataSource.NEWS_TABLE_NAME + "." + NewsDataSource.ColumnNoticias.ID_NOTIC;
         consulta += " order  by " + ColumnVisualiza.ID_VISUALIZA + " DESC";
 
@@ -121,7 +159,15 @@ public class VisualizaDataSource {
         return bd.rawQuery(consulta, null);
     }
 
-
+    /**
+     * Retorna una lista con objetos tipo Noticia con el contenido de cada una de ellas.
+     *
+     * @param usuario       String username del usuario.
+     * @param departamentos Array [] tipo String con las preferencias en los departamentos.
+     * @param categorias    Array [] tipo String con las preferencias en las categorias.
+     * @param noCategorias  Array [] tipo String con las categorias que no se encuentran habilitadas.
+     * @return Objeto ArrayList con elementos tipo Noticia.
+     */
     public ArrayList<Noticia> getListWithPreferences(String usuario, String[] departamentos, String[] categorias, String[] noCategorias) {
         ArrayList<Noticia> noticias = new ArrayList<>();
 

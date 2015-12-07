@@ -8,7 +8,7 @@ import com.parse.Parse;
 import com.parse.ParseObject;
 
 /**
- * Clase Application para iniciar el servicio Parse.
+ * Clase Application para iniciar el servicio de conexion con Parse.
  * Se consulta la siguiente clase antes de iniciar las actividades.
  * Created by Jesus on 16/10/2015.
  */

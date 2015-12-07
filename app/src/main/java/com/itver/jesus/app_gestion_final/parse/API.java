@@ -7,14 +7,17 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * API para consultas entre la aplicación y la plataforma Parse.com
+ * API para consultas entre la aplicacion y la plataforma Parse.com
  * Created by Jesus on 17/10/2015.
  */
 public class API {
 
-    // Noticias
+    /**
+     * Realiza la peticion al servidor Parse.com y retorna un ArrayList con elementos tipo NoticiaClass.
+     *
+     * @return Objeto ArrayList con elementos tipo NoticiaClass.
+     */
     public static List<NoticiaClass> getAllNews() {
-
         List<NoticiaClass> noticias = new LinkedList<NoticiaClass>();
 
         ParseQuery<NoticiaClass> consulta = ParseQuery.getQuery(NoticiaClass.class);
@@ -25,11 +28,15 @@ public class API {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
         return noticias;
     }
 
-    // Calendario
+    /**
+     * Realiza la peticion al servidor Parse.com y recibe el resultado y se inserta en
+     * un ArrayList con elementos tipo CalendarioClass.
+     *
+     * @return Objecto ArrayList con elementos tipo CalendarioClass.
+     */
     public static List<CalendarioClass> getAllDates() {
 
         List<CalendarioClass> fechas = new LinkedList<CalendarioClass>();
@@ -41,7 +48,6 @@ public class API {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
         return fechas;
     }
 }

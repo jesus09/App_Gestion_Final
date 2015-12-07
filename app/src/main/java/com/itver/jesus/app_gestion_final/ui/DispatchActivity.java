@@ -13,6 +13,8 @@ import com.parse.ParseUser;
 
 /**
  * Clase Despachadora de Actividad.
+ * Si el usuario tiene sesion activa se muestra el menu principal.
+ * Si no, se le despliega la vista de inicio de sesion.
  * Created by Jesus on 16/10/2015.
  */
 public class DispatchActivity extends AppCompatActivity {

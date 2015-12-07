@@ -9,14 +9,25 @@ import com.itver.jesus.app_gestion_final.ui.modelos.Noticia;
 
 import java.util.ArrayList;
 
+/**
+ * Clase modelo de la tabla News en SQLite.
+ */
 public class NewsDataSource {
 
     //Metainformación de la base de datos
     public static final String NEWS_TABLE_NAME = "News";
+    /**
+     * Atributo Objeto String como tipo de dato TEXT admitido en la tabla.
+     */
     public static final String STRING_TYPE = "TEXT";
+    /**
+     * Atributo Objeto String con el tipo de dato INTEGER admitido en la tabla.
+     */
     public static final String INT_TYPE = "INTEGER";
 
-    //Campos de la tabla News
+    /**
+     * Clase contenedora de variables estaticas que componen la tabla News
+     */
     public static class ColumnNoticias {
 
         public static final String ID_NOTIC = "id_news";
@@ -30,7 +41,9 @@ public class NewsDataSource {
         public static final String CATEGORIA = "categoria";
     }
 
-    //Script de Creación de la tabla Noticias
+    /**
+     * Script de Creacion de la tabla News
+     */
     public static final String CREATE_NEWS_SCRIPT =
             "CREATE TABLE " + NEWS_TABLE_NAME + "("
                     + ColumnNoticias.ID_NOTIC + " " + STRING_TYPE + " PRIMARY KEY ,"
@@ -42,10 +55,9 @@ public class NewsDataSource {
                     + ColumnNoticias.DEPARTAMENTO + " " + INT_TYPE + " ,"
                     + ColumnNoticias.CATEGORIA + " " + INT_TYPE + " )";
 
-    public static void imprimirScrip() {
-        System.out.println(CREATE_NEWS_SCRIPT);
-    }
-
+    /**
+     * Columnas para la consulta de Noticias almacenadas en la tabla.
+     */
     public static final String[] COLUMNAS_QUERY_NOTICIA = {
             ColumnNoticias.ID_NOTIC,
             ColumnNoticias.IMAGEN_NOTIC,
@@ -78,15 +90,32 @@ public class NewsDataSource {
         return content;
     }
 
+    /**
+     * Inserta una noticia en la tabla News.
+     *
+     * @param noticia Objeto Noticia con la noticia a insertar.
+     * @return Objeto String Llave de la noticia insertada.
+     */
     public String insertarNoticia(Noticia noticia) {
         bd.insert(NEWS_TABLE_NAME, null, contentValuesNews(noticia));
         return noticia.getId();
     }
 
+    /**
+     * Elimina una noticia de la tabla News.
+     *
+     * @param noticia Objeto noticia con la noticia a eliminar.
+     */
     public void eliminarNoticia(Noticia noticia) {
         bd.delete(NEWS_TABLE_NAME, ColumnNoticias.TITULO_NOTIC + "=?", new String[]{noticia.getTitulo()});
     }
 
+    /**
+     * Edita una noticia previamente almacenada en la tabla News.
+     *
+     * @param anterior_noticia Objeto noticia con los valores anteriores.
+     * @param nueva_Noticia    Objeto noticia con los valores nuevos.
+     */
     public void editarNoticia(Noticia anterior_noticia, Noticia nueva_Noticia) {
         bd.update(NEWS_TABLE_NAME,
                 contentValuesNews(nueva_Noticia),
@@ -94,6 +123,11 @@ public class NewsDataSource {
                 new String[]{anterior_noticia.getTitulo()});
     }
 
+    /**
+     * Retorna una lista con objetos tipo Noticia con el contenido de cada una de ellas.
+     *
+     * @return Objeto ArrayList con elementos tipo Noticia.
+     */
     public ArrayList<Noticia> getTodasNoticias() {
 
         ArrayList<Noticia> noticias = new ArrayList<>();
@@ -116,12 +150,23 @@ public class NewsDataSource {
         return noticias;
     }
 
+    /**
+     * Retorna Cursor con las noticias contenidas en la tabla News.
+     *
+     * @return Objeto Cursor.
+     */
     public Cursor getCursorAllNews() {
         // Se extrae :
         // Imagen - Titulo - Autor - Fecha - Hora - Contenido - Departamento - Categoria
         return bd.query(NEWS_TABLE_NAME, COLUMNAS_QUERY_NOTICIA, null, null, null, null, null);
     }
 
+    /**
+     * Retorna Cursor con cantidad limitada de noticias contenidas en la tabla News.
+     *
+     * @param limit tipo int - cantidad de noticias a retornar.
+     * @return Objeto Cursor.
+     */
     public Cursor getCursorAllNews(int limit) {
         // Se extrae :
         // Imagen - Titulo - Autor - Fecha - Hora - Contenido - Departamento - Categoria

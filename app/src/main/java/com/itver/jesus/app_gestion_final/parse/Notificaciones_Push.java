@@ -40,6 +40,14 @@ public class Notificaciones_Push extends ParsePushBroadcastReceiver {
         super();
     }
 
+    /**
+     * Recibe la petición del servidor para almacenar una Noticia en la base de datos SQLite y la almacena.
+     * Posteriormente se muestra una notificacion al celular para avisar al usuario de una nueva noticia.
+     *
+     * @param context Contexto de la aplicacion.
+     * @param intent  Intent con el contenido de la Noticia.
+     * @return Notification para ser visualizada por el usuario.
+     */
     @Override
     protected Notification getNotification(Context context, Intent intent) {
 
