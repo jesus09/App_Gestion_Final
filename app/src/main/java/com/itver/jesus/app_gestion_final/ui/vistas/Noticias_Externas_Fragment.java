@@ -19,6 +19,11 @@ import com.itver.jesus.app_gestion_final.ui.modelos.Preferencias;
 
 import java.util.ArrayList;
 
+/**
+ * Clase que enlaza la vista xml.
+ * Vista que muestra las noticias que se encuentran en la categoria de externas.
+ * Se muestran en su pestana correspondiente.
+ */
 public class Noticias_Externas_Fragment extends Model_Fragment {
 
     private static final String ARG_PARAM1 = "param1";

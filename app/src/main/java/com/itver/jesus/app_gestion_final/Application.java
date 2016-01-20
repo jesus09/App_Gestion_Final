@@ -14,8 +14,8 @@ import com.parse.ParseObject;
  */
 public class Application extends android.app.Application {
 
-    private final String AP_ID = "LPisDk5zh3NHK1vOxoiIhHaEm5COIjTCgbjh1OXo";
-    private final String CLIENT_KEY = "546csNvDvNVxNHkjuc4K7ThUnIWO0LMMh4ra3mim";
+    private final String AP_ID = "86Vhs5IB5g8QRVCOomUdjEDb3aSMDKlk4tKgmdR6";
+    private final String CLIENT_KEY = "vJmDbcIhqsQQxzcdIOt17hXUxhOSupcAhCfNE3Mu";
 
     public Application() {
     }

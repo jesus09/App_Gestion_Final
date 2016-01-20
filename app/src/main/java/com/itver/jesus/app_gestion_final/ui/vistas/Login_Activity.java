@@ -21,6 +21,10 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
+/**
+ * Clase que enlaza la vista xml.
+ * Visualiza la actividad en la pantalla el formulario para iniciar sesion.
+ */
 public class Login_Activity extends AppCompatActivity {
 
     private ProgressDialog progreso;

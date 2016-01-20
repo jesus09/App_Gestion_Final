@@ -11,7 +11,7 @@ import com.itver.jesus.app_gestion_final.ui.adaptadores.AdapterCursor_Noticias;
 
 /**
  * Clase modelo de Fragmento
- * Created by Jesus on 25/10/2015.
+ * Created by Jesus on 25/11/2015.
  */
 public class Model_Fragment extends Fragment {
 

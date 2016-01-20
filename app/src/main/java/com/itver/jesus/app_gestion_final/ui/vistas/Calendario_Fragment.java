@@ -17,6 +17,10 @@ import com.itver.jesus.app_gestion_final.ui.controladores.Controlador_Mes_Fechas
 
 import java.util.ArrayList;
 
+/**
+ * Clase que enlaza la vista xml.
+ * Clase Fragmento para la muestra, activar los eventos y manipulacion con el usuario.
+ */
 public class Calendario_Fragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";

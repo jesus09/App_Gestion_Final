@@ -9,6 +9,10 @@ import android.widget.EditText;
 
 import com.itver.jesus.app_gestion_final.R;
 
+/**
+ * Clase que enlaza la vista xml.
+ * Visualiza en la pantalla la actividad de Reportes para su posterior llenado.
+ */
 public class Reporte_Fragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
@@ -43,7 +47,7 @@ public class Reporte_Fragment extends Fragment {
 
         reporte = (EditText) view.findViewById(R.id.input_reporte);
 
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             texto_campo = savedInstanceState.getString(TEXT_PARAM);
             reporte.setText(texto_campo);
         }

@@ -13,6 +13,10 @@ import com.itver.jesus.app_gestion_final.R;
 import com.itver.jesus.app_gestion_final.database.CalendarioDataSource;
 import com.itver.jesus.app_gestion_final.ui.adaptadores.AdapterCursor_Fechas;
 
+/**
+ * Clase que enlaza la vista xml.
+ * Muestra la actividad en pantalla la lista de fechas en el calendario de un mes determinado.
+ */
 public class List_Fechas_Activity extends AppCompatActivity {
 
     private static final String EXTRA_MES = "mes";

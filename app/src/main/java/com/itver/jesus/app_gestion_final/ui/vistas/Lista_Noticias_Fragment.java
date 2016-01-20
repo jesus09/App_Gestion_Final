@@ -18,6 +18,11 @@ import com.itver.jesus.app_gestion_final.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase que enlaza la vista xml.
+ * Visualiza la actividad en pantalla de la lista de noticias que contiene a su vez 2 pestanas para
+ * mostrar los tipos de noticias.
+ */
 public class Lista_Noticias_Fragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";

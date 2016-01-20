@@ -21,6 +21,10 @@ import com.itver.jesus.app_gestion_final.ui.modelos.Noticia;
 
 import java.util.Locale;
 
+/**
+ * Clase que enlaza la vista xml.
+ * Muestra la actividad en pantalla la noticia completa que previamente se ha seleccionado.
+ */
 public class Noticia_FullActivity extends AppCompatActivity {
 
     private static final String EXTRA_DRAWABLE = "imagen";

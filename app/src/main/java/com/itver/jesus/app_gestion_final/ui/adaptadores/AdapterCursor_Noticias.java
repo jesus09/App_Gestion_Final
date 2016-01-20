@@ -23,6 +23,9 @@ public class AdapterCursor_Noticias extends RecyclerView.Adapter<AdapterCursor_N
     private Context context;
     private boolean activoMiniaturas;
 
+    /**
+     * Clase estatica que emplea el patron viewHolder con la lista RecyclerView.
+     */
     public static class NoticiaViewHolder extends RecyclerView.ViewHolder {
 
         // Campos respectivos de un item
@@ -47,12 +50,25 @@ public class AdapterCursor_Noticias extends RecyclerView.Adapter<AdapterCursor_N
         activoMiniaturas = activarMiniaturas;
     }
 
+    /**
+     * Enlaza la vista del item con el adaptador.
+     *
+     * @param viewGroup Lista con el conjunto de item.
+     * @param viewType  int viewType.
+     * @return FechasViewHolder clase empleando patron viewHolder.
+     */
     @Override
     public NoticiaViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cardview_noticia, viewGroup, false);
         return new NoticiaViewHolder(v);
     }
 
+    /**
+     * Agrega el contenido a la vista del item.
+     *
+     * @param viewHolder Vista a aplicar el contenido.
+     * @param position   int Posicion en el scroll.
+     */
     @Override
     public void onBindViewHolder(NoticiaViewHolder viewHolder, int position) {
         cursor.moveToPosition(position);
@@ -82,6 +98,11 @@ public class AdapterCursor_Noticias extends RecyclerView.Adapter<AdapterCursor_N
         }
     }
 
+    /**
+     * Retorna los elementos almacenados en el Adaptador.
+     *
+     * @return int Cantidad de elementos en el Adaptador.
+     */
     @Override
     public int getItemCount() {
         if (cursor != null)
@@ -89,11 +110,21 @@ public class AdapterCursor_Noticias extends RecyclerView.Adapter<AdapterCursor_N
         return 0;
     }
 
+    /**
+     * Cambia el cursor que muestra por el cursor que recibe.
+     *
+     * @param newCursor Cursor con datos actualizados.
+     */
     public void swapCursor(Cursor newCursor) {
         cursor = newCursor;
         notifyDataSetChanged();
     }
 
+    /**
+     * Cambia el estado de la vista de la imagen en cada item.
+     *
+     * @param activoMiniaturas boolean True, activas - False, ocultas.
+     */
     public void setActivoMiniaturas(boolean activoMiniaturas) {
         if (activoMiniaturas != this.activoMiniaturas) {
             this.activoMiniaturas = activoMiniaturas;
@@ -101,6 +132,11 @@ public class AdapterCursor_Noticias extends RecyclerView.Adapter<AdapterCursor_N
         }
     }
 
+    /**
+     * Retorna el Cursor que contiene los datos en el Adaptador.
+     *
+     * @return Cursor.
+     */
     public Cursor getCursor() {
         return cursor;
     }

@@ -22,6 +22,12 @@ import com.itver.jesus.app_gestion_final.ui.ajustes.Ajustes_Activity;
 import com.itver.jesus.app_gestion_final.ui.modelos.Preferencias;
 import com.parse.ParseUser;
 
+/**
+ * Clase que enlaza la vista xml.
+ * Muestra la actividad principal, NavigationView con las opciones en el menu para elegir.
+ * Asi mismo crea los eventos necesarios para la manipulacion del menu con las diferentes
+ * opciones mostradas.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;

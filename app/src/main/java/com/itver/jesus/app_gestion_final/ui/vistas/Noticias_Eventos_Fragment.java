@@ -19,6 +19,11 @@ import com.itver.jesus.app_gestion_final.ui.modelos.Preferencias;
 
 import java.util.ArrayList;
 
+/**
+ * Clase que enlaza la vista xml.
+ * Vista que muestra las noticias que se encuentran en la categoria de eventos.
+ * Se muestran en su pestana correspondiente.
+ */
 public class Noticias_Eventos_Fragment extends Model_Fragment {
 
     public static final String ARG_SECTION_NUMBER = "section_number";

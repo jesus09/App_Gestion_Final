@@ -19,6 +19,9 @@ public class AdapterCursor_Meses extends RecyclerView.Adapter<AdapterCursor_Mese
     private Cursor cursor;
     private Context context;
 
+    /**
+     * Clase estatica que emplea el patron viewHolder con la lista RecyclerView.
+     */
     public static class CalendarioViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
         public TextView inicial;
@@ -38,12 +41,25 @@ public class AdapterCursor_Meses extends RecyclerView.Adapter<AdapterCursor_Mese
         this.context = context;
     }
 
+    /**
+     * Enlaza la vista del item con el adaptador.
+     *
+     * @param viewGroup Lista con el conjunto de item.
+     * @param viewType  int viewType.
+     * @return FechasViewHolder clase empleando patron viewHolder.
+     */
     @Override
     public CalendarioViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cardview_calendario, viewGroup, false);
         return new CalendarioViewHolder(v);
     }
 
+    /**
+     * Agrega el contenido a la vista del item.
+     *
+     * @param viewHolder Vista a aplicar el contenido.
+     * @param position   int Posicion en el scroll.
+     */
     @Override
     public void onBindViewHolder(CalendarioViewHolder viewHolder, int position) {
         cursor.moveToPosition(position);
@@ -59,6 +75,11 @@ public class AdapterCursor_Meses extends RecyclerView.Adapter<AdapterCursor_Mese
         viewHolder.anio.setText(anio + "");
     }
 
+    /**
+     * Retorna los elementos almacenados en el Adaptador.
+     *
+     * @return int Cantidad de elementos en el Adaptador.
+     */
     @Override
     public int getItemCount() {
         if (cursor != null)
@@ -66,11 +87,21 @@ public class AdapterCursor_Meses extends RecyclerView.Adapter<AdapterCursor_Mese
         return 0;
     }
 
+    /**
+     * Cambia el cursor que muestra por el cursor que recibe.
+     *
+     * @param newCursor Cursor con datos actualizados.
+     */
     public void swapCursor(Cursor newCursor) {
         cursor = newCursor;
         notifyDataSetChanged();
     }
 
+    /**
+     * Retorna el Cursor que contiene los datos en el Adaptador.
+     *
+     * @return Cursor.
+     */
     public Cursor getCursor() {
         return cursor;
     }
